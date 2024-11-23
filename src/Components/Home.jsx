@@ -5,8 +5,8 @@ import { TbCoinTaka } from "react-icons/tb";
 
 const Home = () => {
   return (
-    <div className="container mx-auto min-h-[calc(100vh-64px)] bg-[#EDEDF5]">
-      <div className="p-4">
+    <div className="min-h-[calc(100vh-64px)] bg-[#EDEDF5]">
+      <div className="container mx-auto p-4">
         <div className="rounded-md border border-black bg-white text-2xl font-bold text-blue-400">
           <h1 className="p-4">Ads Home</h1>
           <div className="my-2 border-t border-black p-0"></div>
