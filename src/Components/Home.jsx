@@ -1,7 +1,11 @@
 import { AiTwotoneNotification } from "react-icons/ai";
+import { FaMoneyBillTransfer } from "react-icons/fa6";
+import { FiUser, FiUserPlus } from "react-icons/fi";
+import { GrTransaction } from "react-icons/gr";
 import { MdOutlineDeviceUnknown } from "react-icons/md";
 import { PiHandWithdrawDuotone } from "react-icons/pi";
 import { TbCoinTaka } from "react-icons/tb";
+import { TfiHeadphoneAlt } from "react-icons/tfi";
 
 const Home = () => {
   return (
@@ -59,6 +63,54 @@ const Home = () => {
                     <AiTwotoneNotification className="size-12 text-blue-500" />
                   </center>
                   <h6 className="text-center text-sm">Notice</h6>
+                </div>
+              </div>
+              {/* 5th icon */}
+              <div className="col-3">
+                <div
+                  style={{ height: "100%", borderRadius: "3px" }}
+                  className="row-3 p-1"
+                >
+                  <center>
+                    <FiUser className="size-12 text-blue-500" />
+                  </center>
+                  <h6 className="text-center text-sm">Profile</h6>
+                </div>
+              </div>
+              {/* 6th icon */}
+              <div className="col-3">
+                <div
+                  style={{ height: "100%", borderRadius: "3px" }}
+                  className="row-3 p-1"
+                >
+                  <center>
+                    <FiUserPlus className="size-12 text-blue-500" />
+                  </center>
+                  <h6 className="text-center text-sm">Refer</h6>
+                </div>
+              </div>
+              {/* 7th icon */}
+              <div className="col-3">
+                <div
+                  style={{ height: "100%", borderRadius: "3px" }}
+                  className="row-3 p-1"
+                >
+                  <center>
+                    <GrTransaction className="size-12 text-blue-500" />
+                  </center>
+                  <h6 className="text-center text-sm">Transaction</h6>
+                </div>
+              </div>
+              {/* 8th icon */}
+              <div className="col-3">
+                <div
+                  style={{ height: "100%", borderRadius: "3px" }}
+                  className="row-3 p-1"
+                >
+                  <center>
+                    <TfiHeadphoneAlt className="size-12 text-blue-500" />
+                  </center>
+                  <h6 className="text-center text-sm">Help Line</h6>
                 </div>
               </div>
             </div>
