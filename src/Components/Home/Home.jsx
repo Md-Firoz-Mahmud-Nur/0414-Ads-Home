@@ -2,6 +2,7 @@ import Ads from "./Ads";
 import AdsHome from "./AdsHome";
 import Company from "./Company";
 import Notice from "./Notice";
+import Partner from "./Partner";
 import Statement from "./Statement";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
       <Ads></Ads>
       <Statement></Statement>
       <Company></Company>
+      <Partner></Partner>
     </div>
   );
 };
