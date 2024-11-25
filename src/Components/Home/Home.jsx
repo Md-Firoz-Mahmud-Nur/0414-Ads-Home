@@ -1,3 +1,4 @@
+import Ads from "./Ads";
 import AdsHome from "./AdsHome";
 import Company from "./Company";
 import Notice from "./Notice";
@@ -8,6 +9,7 @@ const Home = () => {
     <div className="min-h-[calc(100vh-64px)] bg-[#EDEDF5]">
       <Notice></Notice>
       <AdsHome></AdsHome>
+      <Ads></Ads>
       <Statement></Statement>
       <Company></Company>
     </div>
