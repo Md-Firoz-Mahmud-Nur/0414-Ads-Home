@@ -1,7 +1,11 @@
-import { TbXboxX } from "react-icons/tb";
+import { TbLogout, TbXboxX } from "react-icons/tb";
 import manPng from "../../assets/man.png";
-import { PiHandWithdrawDuotone } from "react-icons/pi";
+import { PiHandWithdrawDuotone, PiPasswordBold } from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
+import { IoHomeOutline, IoSettingsOutline } from "react-icons/io5";
+import { FaMoneyBills } from "react-icons/fa6";
+import { FiUserPlus } from "react-icons/fi";
+import { TfiHeadphoneAlt } from "react-icons/tfi";
 
 const Sidebar = () => {
   return (
@@ -43,11 +47,47 @@ const Sidebar = () => {
               <div className="pt-1 font-light text-white">Profile</div>
             </div>
           </div>
-          <li>
-            <a>Sidebar Item 1</a>
+          <li className="rounded-lg hover:bg-blue-200">
+            <div className="pl-2">
+              <IoHomeOutline className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></IoHomeOutline>
+              <span className="pl-2">Home</span>
+            </div>
           </li>
-          <li>
-            <a>Sidebar Item 2</a>
+          <li className="rounded-lg hover:bg-blue-200">
+            <div className="pl-2">
+              <FaMoneyBills className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></FaMoneyBills>
+              <span className="pl-2">Withdraw History</span>
+            </div>
+          </li>
+          <li className="rounded-lg hover:bg-blue-200">
+            <div className="pl-2">
+              <FiUserPlus className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></FiUserPlus>
+              <span className="pl-2">Referral</span>
+            </div>
+          </li>
+          <li className="rounded-lg hover:bg-blue-200">
+            <div className="pl-2">
+              <IoSettingsOutline className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></IoSettingsOutline>
+              <span className="pl-2">Account Settings</span>
+            </div>
+          </li>
+          <li className="rounded-lg hover:bg-blue-200">
+            <div className="pl-2">
+              <PiPasswordBold className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></PiPasswordBold>
+              <span className="pl-2">Change Password</span>
+            </div>
+          </li>
+          <li className="rounded-lg hover:bg-blue-200">
+            <div className="pl-2">
+              <TfiHeadphoneAlt className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></TfiHeadphoneAlt>
+              <span className="pl-2">Support</span>
+            </div>
+          </li>
+          <li className="rounded-lg hover:bg-blue-200">
+            <div className="pl-2">
+              <TbLogout className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></TbLogout>
+              <span className="pl-2">Log Out</span>
+            </div>
           </li>
         </ul>
       </div>
