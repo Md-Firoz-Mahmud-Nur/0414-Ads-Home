@@ -5,6 +5,7 @@ import { MdOutlineDeviceUnknown } from "react-icons/md";
 import { PiHandWithdrawDuotone } from "react-icons/pi";
 import { TbCoinTaka } from "react-icons/tb";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
+import { Link } from "react-router-dom";
 
 const AdsHome = () => {
   return (
@@ -16,15 +17,12 @@ const AdsHome = () => {
           {/* grid */}
           <div className="grid grid-cols-4">
             {/* 1st icon */}
-            <div className="col-3">
-              <div
-                style={{ height: "100%", borderRadius: "3px" }}
-                className="row-3 p-1"
-              >
-                <center>
+            <div>
+              <div className="flex h-full justify-center p-1">
+                <Link className="flex flex-col items-center py-2" to="/myWork">
                   <TbCoinTaka className="size-12 text-blue-500" />
-                </center>
-                <h6 className="text-center text-sm">My Work</h6>
+                  <h6 className="text-sm">My Work</h6>
+                </Link>
               </div>
             </div>
             {/* 2nd icon */}
