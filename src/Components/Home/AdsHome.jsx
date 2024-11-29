@@ -17,97 +17,60 @@ const AdsHome = () => {
           {/* grid */}
           <div className="grid grid-cols-4">
             {/* 1st icon */}
-            <div>
-              <div className="flex h-full justify-center p-1">
-                <Link className="flex flex-col items-center py-2" to="/myWork">
-                  <TbCoinTaka className="size-12 text-blue-500" />
-                  <h6 className="text-sm">My Work</h6>
-                </Link>
-              </div>
+            <div className="flex h-full justify-center p-1">
+              <Link className="flex flex-col items-center py-2" to="/myWork">
+                <TbCoinTaka className="size-12 text-blue-500" />
+                <h6 className="text-center text-sm my-auto">My Work</h6>
+              </Link>
             </div>
             {/* 2nd icon */}
-            <div className="col-3">
-              <div
-                style={{ height: "100%", borderRadius: "3px" }}
-                className="row-3 p-1"
-              >
-                <center>
-                  <MdOutlineDeviceUnknown className="size-12 text-blue-500" />
-                </center>
-                <h6 className="text-center text-sm">Tutorial</h6>
-              </div>
+            <div className="flex h-full justify-center p-1">
+              <Link className="flex flex-col items-center py-2" to="/myWork">
+                <MdOutlineDeviceUnknown className="size-12 text-blue-500" />
+                <h6 className="text-center text-sm my-auto">Tutorial</h6>
+              </Link>
             </div>
             {/* 3rd icon */}
-            <div className="col-3">
-              <div
-                style={{ height: "100%", borderRadius: "3px" }}
-                className="row-3 p-1"
-              >
-                <center>
-                  <PiHandWithdrawDuotone className="size-12 text-blue-500" />
-                </center>
-                <h6 className="text-center text-sm">Withdraw</h6>
-              </div>
+            <div className="flex h-full justify-center p-1">
+              <Link className="flex flex-col items-center py-2" to="/myWork">
+                <PiHandWithdrawDuotone className="size-12 text-blue-500" />
+                <h6 className="text-center text-sm my-auto">Withdraw</h6>
+              </Link>
             </div>
             {/* 4th icon */}
-            <div className="col-3">
-              <div
-                style={{ height: "100%", borderRadius: "3px" }}
-                className="row-3 p-1"
-              >
-                <center>
-                  <AiTwotoneNotification className="size-12 text-blue-500" />
-                </center>
-                <h6 className="text-center text-sm">Notice</h6>
-              </div>
+            <div className="flex h-full justify-center p-1">
+              <Link className="flex flex-col items-center py-2" to="/myWork">
+                <AiTwotoneNotification className="size-12 text-blue-500" />
+                <h6 className="text-center text-sm my-auto">Notice</h6>
+              </Link>
             </div>
             {/* 5th icon */}
-            <div className="col-3">
-              <div
-                style={{ height: "100%", borderRadius: "3px" }}
-                className="row-3 p-1"
-              >
-                <center>
-                  <FiUser className="size-12 text-blue-500" />
-                </center>
-                <h6 className="text-center text-sm">Profile</h6>
-              </div>
+            <div className="flex h-full justify-center p-1">
+              <Link className="flex flex-col items-center py-2" to="/myWork">
+                <FiUser className="size-12 text-blue-500" />
+                <h6 className="text-center text-sm my-auto">Profile</h6>
+              </Link>
             </div>
             {/* 6th icon */}
-            <div className="col-3">
-              <div
-                style={{ height: "100%", borderRadius: "3px" }}
-                className="row-3 p-1"
-              >
-                <center>
-                  <FiUserPlus className="size-12 text-blue-500" />
-                </center>
-                <h6 className="text-center text-sm">Refer</h6>
-              </div>
+            <div className="flex h-full justify-center p-1">
+              <Link className="flex flex-col items-center py-2" to="/myWork">
+                <FiUserPlus className="size-12 text-blue-500" />
+                <h6 className="text-center text-sm my-auto">Refer</h6>
+              </Link>
             </div>
             {/* 7th icon */}
-            <div className="col-3">
-              <div
-                style={{ height: "100%", borderRadius: "3px" }}
-                className="row-3 p-1"
-              >
-                <center>
-                  <GrTransaction className="size-12 text-blue-500" />
-                </center>
-                <h6 className="text-center text-sm">Transaction</h6>
-              </div>
+            <div className="flex h-full justify-center p-1">
+              <Link className="flex flex-col items-center py-2" to="/myWork">
+                <GrTransaction className="size-12 text-blue-500" />
+                <h6 className="text-center text-sm my-auto">Transaction</h6>
+              </Link>
             </div>
             {/* 8th icon */}
-            <div className="col-3">
-              <div
-                style={{ height: "100%", borderRadius: "3px" }}
-                className="row-3 p-1"
-              >
-                <center>
-                  <TfiHeadphoneAlt className="size-12 text-blue-500" />
-                </center>
-                <h6 className="text-center text-sm">Help Line</h6>
-              </div>
+            <div className="flex h-full justify-center p-1">
+              <Link className="flex flex-col items-center py-2" to="/myWork">
+                <TfiHeadphoneAlt className="size-12 text-blue-500" />
+                <h6 className="text-center text-sm my-auto">Help Line</h6>
+              </Link>
             </div>
           </div>
         </div>
