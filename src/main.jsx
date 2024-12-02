@@ -5,6 +5,7 @@ import "./index.css";
 import Root from "./Root";
 import Home from "./Components/Home/Home";
 import MyWork from "./Components/MyWork/MyWork";
+import Login from "./Components/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/myWork",
         element: <MyWork></MyWork>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
       },
     ],
   },
