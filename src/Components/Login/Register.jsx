@@ -67,6 +67,9 @@ const Register = () => {
               />
             </label>
           </div>
+          <button className="hover:border-blue-500-500 btn btn-outline mt-5 border-2 border-blue-500 text-xl text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white">
+            Register Now
+          </button>
         </form>
       </div>
     </div>
