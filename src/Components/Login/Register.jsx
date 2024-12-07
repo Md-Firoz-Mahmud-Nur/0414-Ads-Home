@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 
 const Register = () => {
@@ -71,6 +72,13 @@ const Register = () => {
             Register Now
           </button>
         </form>
+        <p className="pt-4">
+          Have an account?
+          <Link className="btn-link" to="/login">
+            Login
+          </Link>
+          now
+        </p>
       </div>
     </div>
   );
