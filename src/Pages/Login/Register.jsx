@@ -2,12 +2,25 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 
 const Register = () => {
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const name = e.target.fullName.value;
+    const email = e.target.email.value;
+    const mobileNumber = e.target.mobileNumber.value;
+    const password = e.target.password.value;
+    const reEnterPassword = e.target.reEnterPassword.value;
+    const refer = e.target.refer.value;
+    console.log(name, email, mobileNumber, password, reEnterPassword, refer);
+  };
   return (
     <div className="flex min-h-[calc(100vh-64px)] items-center justify-center bg-[#EDEDF5] px-2">
-      <div className="container mx-auto flex max-h-min flex-col items-center border bg-white p-4 my-4 rounded-2xl">
+      <div className="container mx-auto my-4 flex max-h-min flex-col items-center rounded-2xl border bg-white p-4">
         <img className="size-60" src={Logo} alt="" />
         {/* form */}
-        <form className="mt-10 flex w-10/12 flex-col gap-4">
+        <form
+          onSubmit={handleRegister}
+          className="mt-10 flex w-10/12 flex-col gap-4"
+        >
           <div className="form-control col-span-2 w-full md:col-span-1">
             <label className="input-group">
               <input
@@ -15,7 +28,19 @@ const Register = () => {
                 min={0}
                 className="input input-bordered w-full placeholder:text-gray-500"
                 name="fullName"
-                placeholder="Enter Full Name"
+                placeholder="Full Name"
+                required
+              />
+            </label>
+          </div>
+          <div className="form-control col-span-2 w-full md:col-span-1">
+            <label className="input-group">
+              <input
+                type="email"
+                min={0}
+                className="input input-bordered w-full placeholder:text-gray-500"
+                name="email"
+                placeholder="Email Address"
                 required
               />
             </label>
@@ -26,8 +51,8 @@ const Register = () => {
                 type="number"
                 min={0}
                 className="input input-bordered w-full placeholder:text-gray-500"
-                name="fullName"
-                placeholder="Enter Mobile Number"
+                name="mobileNumber"
+                placeholder="Mobile Number"
                 required
               />
             </label>
@@ -38,8 +63,8 @@ const Register = () => {
                 type="password"
                 min={0}
                 className="input input-bordered w-full placeholder:text-gray-500"
-                name="fullName"
-                placeholder="Enter Password"
+                name="password"
+                placeholder="Password"
                 required
               />
             </label>
@@ -50,7 +75,7 @@ const Register = () => {
                 type="password"
                 min={0}
                 className="input input-bordered w-full placeholder:text-gray-500"
-                name="fullName"
+                name="reEnterPassword"
                 placeholder="Re Enter Password"
                 required
               />
@@ -62,9 +87,9 @@ const Register = () => {
                 type="text"
                 min={0}
                 className="input input-bordered w-full placeholder:text-gray-500"
-                name="fullName"
-                placeholder="Enter Refer"
-                required
+                name="refer"
+                placeholder="Refer (Optional)"
+                // required
               />
             </label>
           </div>
