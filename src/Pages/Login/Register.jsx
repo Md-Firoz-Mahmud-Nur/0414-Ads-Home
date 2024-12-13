@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const handleRegister = async (e) => {
@@ -11,6 +13,16 @@ const Register = () => {
     const reEnterPassword = e.target.reEnterPassword.value;
     const refer = e.target.refer.value;
     console.log(name, email, mobileNumber, password, reEnterPassword, refer);
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      toast.error("Password must contain at least one uppercase letter");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      toast.error("Password must contain at least one lowercase letter");
+      return;
+    }
   };
   return (
     <div className="flex min-h-[calc(100vh-64px)] items-center justify-center bg-[#EDEDF5] px-2">
@@ -105,6 +117,7 @@ const Register = () => {
           now
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };
