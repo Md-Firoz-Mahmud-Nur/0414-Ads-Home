@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider";
 
 const Register = () => {
+  const { createNewUser } = useContext(AuthContext);
   const handleRegister = async (e) => {
     e.preventDefault();
     const name = e.target.fullName.value;
@@ -23,6 +26,9 @@ const Register = () => {
       toast.error("Password must contain at least one lowercase letter");
       return;
     }
+
+    const result = await createNewUser(email, password);
+    console.log(result);
   };
   return (
     <div className="flex min-h-[calc(100vh-64px)] items-center justify-center bg-[#EDEDF5] px-2">
