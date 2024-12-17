@@ -1,16 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider";
+import { uploadImage } from "../../Hooks/imageUpload";
 
 const Register = () => {
-  const { createNewUser } = useContext(AuthContext);
+  const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);
   const handleRegister = async (e) => {
     e.preventDefault();
     const name = e.target.fullName.value;
     const email = e.target.email.value;
+    const photo = e.target.photo.files[0];
     const mobileNumber = e.target.mobileNumber.value;
     const password = e.target.password.value;
     const reEnterPassword = e.target.reEnterPassword.value;
@@ -27,8 +29,25 @@ const Register = () => {
       return;
     }
 
-    const result = await createNewUser(email, password);
-    console.log(result);
+    try {
+      const photoUrl = photo ? await uploadImage(photo) : "";
+      console.log(photoUrl);
+
+      const result = await createNewUser(email, password);
+      console.log(result);
+
+      await updateExistingUserProfile(name, photoUrl);
+
+      toast.success("Registration successful. Redirecting to home page...", {
+        autoClose: 1500,
+      });
+
+      setTimeout(() => {
+        Navigate(location?.state ? location.state : "/");
+      }, 1500);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   return (
     <div className="flex min-h-[calc(100vh-64px)] items-center justify-center bg-[#EDEDF5] px-2">
@@ -62,6 +81,13 @@ const Register = () => {
                 required
               />
             </label>
+          </div>
+          <div className="form-control w-full">
+            <input
+              name="photo"
+              type="file"
+              className="file-input file-input-bordered w-full"
+            />
           </div>
           <div className="form-control col-span-2 w-full md:col-span-1">
             <label className="input-group">
