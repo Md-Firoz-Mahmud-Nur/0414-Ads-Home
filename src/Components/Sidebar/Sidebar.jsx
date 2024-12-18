@@ -6,14 +6,21 @@ import { IoHomeOutline, IoSettingsOutline } from "react-icons/io5";
 import { FaMoneyBills } from "react-icons/fa6";
 import { FiUserPlus } from "react-icons/fi";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider";
 
 const Sidebar = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="drawer z-10 w-10">
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <label htmlFor="my-drawer" className="drawer-button">
-          <img src={manPng} alt="" className="size-10" />
+          <img
+            src={user?.photoURL || manPng}
+            alt=""
+            className="size-10 rounded-full"
+          />
         </label>
       </div>
       <div className="drawer-side">
@@ -25,10 +32,14 @@ const Sidebar = () => {
         <ul className="menu min-h-full w-80 bg-base-200 p-4 text-base-content">
           <div className="flex items-center justify-between">
             <div className="flex gap-4">
-              <img className="size-10" src={manPng} alt="" />
+              <img
+                className="size-10 rounded-full border-2 border-blue-500"
+                src={user?.photoURL || manPng}
+                alt=""
+              />
               <div>
                 <p>01722222222</p>
-                <p> 0.0</p>
+                <p>0.0</p>
               </div>
             </div>
             <TbXboxX className="text-3xl text-red-500" />

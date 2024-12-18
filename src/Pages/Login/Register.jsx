@@ -31,7 +31,6 @@ const Register = () => {
 
     try {
       const photoUrl = photo ? await uploadImage(photo) : "";
-      console.log(photoUrl);
 
       const result = await createNewUser(email, password);
       console.log(result);

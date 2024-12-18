@@ -23,7 +23,7 @@ const Navbar = () => {
             <Sidebar></Sidebar>
             <div className="flex flex-col gap-1 pb-1">
               <h1 className="font-bold">
-                {user?.email || "log in to see email"}
+                {user?.displayName || "log in to see Name"}
               </h1>
               <h1 className="rounded-full bg-white py-0.5 pl-2 text-black">
                 Tap to balance
