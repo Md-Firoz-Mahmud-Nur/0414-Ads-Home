@@ -29,6 +29,13 @@ const Register = () => {
       return;
     }
 
+    const isValidMobileNumber = /^01[3-9]\d{8}$/.test(mobileNumber);
+
+    if (!isValidMobileNumber) {
+      toast.error("Enter Valid Mobile Number");
+      return;
+    }
+
     try {
       const photoUrl = photo ? await uploadImage(photo) : "";
 
