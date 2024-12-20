@@ -24,10 +24,22 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const updateExistingUserProfile = (name, photoUrl) => {
+  // const updateExistingUserProfile = (name, photoUrl) => {
+  //   updateProfile(auth.currentUser, {
+  //     displayName: name,
+  //     photoURL: photoUrl,
+  //   })
+  //     .then((result) => {
+  //       return result;
+  //     })
+  //     .catch((error) => {
+  //       throw error;
+  //     });
+  // };
+
+  const updateExistingUserProfile = (name) => {
     updateProfile(auth.currentUser, {
       displayName: name,
-      photoURL: photoUrl,
     })
       .then((result) => {
         return result;
@@ -36,6 +48,7 @@ const AuthProvider = ({ children }) => {
         throw error;
       });
   };
+
   const login = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -56,18 +69,18 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if (currentUser) {
-        const userInfo = { email: currentUser.email };
-        axiosPublic.post("/jwt", userInfo).then((res) => {
-          if (res.data.token) {
-            localStorage.setItem("access-token", res.data.token);
-            setLoading(false);
-          }
-        });
-      } else {
-        localStorage.removeItem("access-token");
-        setLoading(false);
-      }
+      // if (currentUser) {
+      //   const userInfo = { email: currentUser.email };
+      //   axiosPublic.post("/jwt", userInfo).then((res) => {
+      //     if (res.data.token) {
+      //       localStorage.setItem("access-token", res.data.token);
+      //       setLoading(false);
+      //     }
+      //   });
+      // } else {
+      //   localStorage.removeItem("access-token");
+      //   setLoading(false);
+      // }
     });
     return () => {
       return unsubscribe();

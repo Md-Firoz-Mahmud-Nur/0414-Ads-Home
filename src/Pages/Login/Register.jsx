@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider";
-import { uploadImage } from "../../Hooks/imageUpload";
+// import { uploadImage } from "../../Hooks/imageUpload";
 
 const Register = () => {
   const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);
@@ -12,7 +12,7 @@ const Register = () => {
     e.preventDefault();
     const name = e.target.fullName.value;
     const email = e.target.email.value;
-    const photo = e.target.photo.files[0];
+    // const photo = e.target.photo.files[0];
     const mobileNumber = e.target.mobileNumber.value;
     const password = e.target.password.value;
     const reEnterPassword = e.target.reEnterPassword.value;
@@ -37,12 +37,13 @@ const Register = () => {
     }
 
     try {
-      const photoUrl = photo ? await uploadImage(photo) : "";
+      // const photoUrl = photo ? await uploadImage(photo) : "";
 
       const result = await createNewUser(email, password);
       console.log(result);
 
-      await updateExistingUserProfile(name, photoUrl);
+      // await updateExistingUserProfile(name, photoUrl);
+      await updateExistingUserProfile(name);
 
       toast.success("Registration successful. Redirecting to home page...", {
         autoClose: 1500,
@@ -88,13 +89,13 @@ const Register = () => {
               />
             </label>
           </div>
-          <div className="form-control w-full">
+          {/* <div className="form-control w-full">
             <input
               name="photo"
               type="file"
               className="file-input file-input-bordered w-full"
             />
-          </div>
+          </div> */}
           <div className="form-control col-span-2 w-full md:col-span-1">
             <label className="input-group">
               <input
