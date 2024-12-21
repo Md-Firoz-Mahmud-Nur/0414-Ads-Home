@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,6 +8,8 @@ import { AuthContext } from "../../AuthProvider";
 
 const Register = () => {
   const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleRegister = async (e) => {
     e.preventDefault();
     const name = e.target.fullName.value;
@@ -50,7 +52,7 @@ const Register = () => {
       });
 
       setTimeout(() => {
-        Navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/");
       }, 1500);
     } catch (error) {
       toast.error(error.message);
