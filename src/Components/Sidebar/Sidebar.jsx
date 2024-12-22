@@ -6,14 +6,27 @@ import { IoHomeOutline, IoSettingsOutline } from "react-icons/io5";
 import { FaMoneyBills } from "react-icons/fa6";
 import { FiUserPlus } from "react-icons/fi";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { AuthContext } from "../../AuthProvider";
 
 const Sidebar = () => {
   const { user } = useContext(AuthContext);
+  const drawerRef = useRef(null);
+
+  const handleCloseDrawer = () => {
+    if (drawerRef.current) {
+      drawerRef.current.checked = false;
+    }
+  };
+
   return (
     <div className="drawer z-10 w-10">
-      <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+      <input
+        id="my-drawer"
+        type="checkbox"
+        className="drawer-toggle"
+        ref={drawerRef}
+      />
       <div className="drawer-content">
         <label htmlFor="my-drawer" className="drawer-button">
           <img
@@ -42,7 +55,10 @@ const Sidebar = () => {
                 <p>0.0</p>
               </div>
             </div>
-            <TbXboxX className="text-3xl text-red-500" />
+            <TbXboxX
+              onClick={handleCloseDrawer}
+              className="text-3xl text-red-500"
+            />
           </div>
           <div className="my-4 flex justify-around rounded-lg bg-blue-500 p-2">
             <div className="flex flex-col items-center">
