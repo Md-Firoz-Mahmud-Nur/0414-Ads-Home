@@ -1,18 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const HandleLogin = (e) => {
+    setIsLoading(true);
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
     login(email, password).then((result) => {
       console.log(result);
+      toast.success("Login successful. Please Wait for Redirect", {
+        autoClose: 1500,
+      });
+      setTimeout(() => {
+        setIsLoading(false);
+        navigate(location?.state ? location.state : "/");
+      }, 1500);
     });
   };
 
@@ -48,8 +61,18 @@ const Login = () => {
               />
             </label>
           </div>
-          <button className="hover:border-blue-500-500 btn btn-outline mt-5 border-2 border-blue-500 text-xl text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white">
-            Login
+          <button
+            className="hover:border-blue-500-500 btn btn-outline mt-5 border-2 border-blue-500 text-xl text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <span className="flex items-center">
+                <span className="loading loading-spinner loading-sm mr-2"></span>
+                Loading...
+              </span>
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
         <p className="pt-4">
