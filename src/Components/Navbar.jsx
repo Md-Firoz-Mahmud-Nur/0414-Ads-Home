@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider";
 import { Link } from "react-router-dom";
+import { IoHomeOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const { user, signOutUser, setUser } = useContext(AuthContext);
@@ -32,6 +33,9 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-3 pr-4">
+          <Link to="/">
+            <IoHomeOutline className="size-7"></IoHomeOutline>
+          </Link>
           <IoMdNotificationsOutline className="size-7"></IoMdNotificationsOutline>
           {user ? (
             <Link onClick={signOut}>
