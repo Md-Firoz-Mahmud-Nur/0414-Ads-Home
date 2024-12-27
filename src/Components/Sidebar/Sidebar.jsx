@@ -8,6 +8,7 @@ import { FiUserPlus } from "react-icons/fi";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { useContext, useRef } from "react";
 import { AuthContext } from "../../AuthProvider";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { user } = useContext(AuthContext);
@@ -67,12 +68,12 @@ const Sidebar = () => {
               </div>
               <div className="pt-1 font-light text-white">Withdraw</div>
             </div>
-            <div className="flex flex-col items-center">
+            <Link to="/profile" className="flex flex-col items-center">
               <div>
                 <CgProfile className="size-14 rounded-full bg-blue-700 p-2 text-white"></CgProfile>
               </div>
               <div className="pt-1 font-light text-white">Profile</div>
-            </div>
+            </Link>
           </div>
           <li className="rounded-lg hover:bg-blue-200">
             <div className="pl-2">
