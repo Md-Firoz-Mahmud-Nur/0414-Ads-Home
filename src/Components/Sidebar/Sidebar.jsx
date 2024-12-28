@@ -68,7 +68,11 @@ const Sidebar = () => {
               </div>
               <div className="pt-1 font-light text-white">Withdraw</div>
             </div>
-            <Link to="/profile" className="flex flex-col items-center">
+            <Link
+              to="/profile"
+              onClick={handleCloseDrawer}
+              className="flex flex-col items-center"
+            >
               <div>
                 <CgProfile className="size-14 rounded-full bg-blue-700 p-2 text-white"></CgProfile>
               </div>
@@ -76,10 +80,10 @@ const Sidebar = () => {
             </Link>
           </div>
           <li className="rounded-lg hover:bg-blue-200">
-            <div className="pl-2">
+            <Link to="/" onClick={handleCloseDrawer} className="pl-2">
               <IoHomeOutline className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></IoHomeOutline>
               <span className="pl-2">Home</span>
-            </div>
+            </Link>
           </li>
           <li className="rounded-lg hover:bg-blue-200">
             <div className="pl-2">
