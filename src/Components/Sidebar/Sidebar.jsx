@@ -11,13 +11,21 @@ import { AuthContext } from "../../AuthProvider";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, signOutUser, setUser } = useContext(AuthContext);
   const drawerRef = useRef(null);
 
   const handleCloseDrawer = () => {
     if (drawerRef.current) {
       drawerRef.current.checked = false;
     }
+  };
+
+  const signOut = () => {
+    signOutUser()
+      .then(() => {
+        setUser(null);
+      })
+      .catch(() => {});
   };
 
   return (
@@ -116,10 +124,14 @@ const Sidebar = () => {
             </div>
           </li>
           <li className="rounded-lg hover:bg-blue-200">
-            <div className="pl-2">
+            <Link
+              to="/"
+              onClick={(signOut, handleCloseDrawer)}
+              className="pl-2"
+            >
               <TbLogout className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></TbLogout>
               <span className="pl-2">Log Out</span>
-            </div>
+            </Link>
           </li>
         </ul>
       </div>
