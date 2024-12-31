@@ -50,7 +50,9 @@ const Register = () => {
         password,
         mobileNumber,
         refer,
-        createdAt: new Date().toISOString(),
+        createdAt: new Date(
+          new Date().getTime() + 6 * 60 * 60 * 1000,
+        ).toISOString(),
         role: "member",
       };
 
