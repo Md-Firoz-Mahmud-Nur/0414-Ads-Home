@@ -48,6 +48,9 @@ const Register = () => {
         name,
         email,
         password,
+        mobileNumber,
+        refer,
+        createdAt: new Date().toISOString(),
         role: "member",
       };
 
