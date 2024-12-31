@@ -44,6 +44,28 @@ const Register = () => {
       const result = await createNewUser(email, password);
       console.log(result);
 
+      const newUser = {
+        name,
+        email,
+        password,
+        role: "member",
+      };
+
+      const response = await fetch(`${import.meta.env.VITE_SERVER}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      if (response.ok) {
+        console.log("user added successfully");
+      }
+      if (!response.ok) {
+        throw new Error("Failed to save user to database");
+      }
+
       // await updateExistingUserProfile(name, photoUrl);
       await updateExistingUserProfile(name);
 
