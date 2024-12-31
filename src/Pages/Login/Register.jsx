@@ -50,6 +50,7 @@ const Register = () => {
         password,
         mobileNumber,
         refer,
+        balance: 50,
         createdAt: new Date(
           new Date().getTime() + 6 * 60 * 60 * 1000,
         ).toISOString(),

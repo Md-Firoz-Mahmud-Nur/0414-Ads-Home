@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthProvider";
 import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
+import useMember from "../Hooks/useMember";
 
 const Navbar = () => {
   const { user, signOutUser, setUser } = useContext(AuthContext);
@@ -15,6 +16,8 @@ const Navbar = () => {
       })
       .catch(() => {});
   };
+  const [isMember] = useMember();
+  console.log(isMember);
 
   return (
     <div className="h-16 bg-blue-500">
@@ -27,7 +30,7 @@ const Navbar = () => {
                 {user?.displayName || "log in to see Name"}
               </h1>
               <h1 className="rounded-full bg-white py-0.5 pl-2 text-black">
-                Balance
+                {user ? isMember?.balance : "Tap to balance"}
               </h1>
             </div>
           </div>
