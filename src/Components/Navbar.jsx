@@ -27,9 +27,9 @@ const Navbar = () => {
             <Sidebar></Sidebar>
             <div className="flex flex-col gap-1 pb-1">
               <h1 className="font-bold">
-                {user?.displayName || "log in to see Name"}
+                {isMember?.name || "log in to see Name"}
               </h1>
-              <h1 className="rounded-full bg-white py-0.5 pl-2 text-black">
+              <h1 className="rounded-full bg-white px-2 py-0.5 text-black">
                 {user ? isMember?.balance : "Tap to balance"}
               </h1>
             </div>
