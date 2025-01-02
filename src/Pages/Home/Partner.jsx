@@ -26,7 +26,7 @@ const Partner = () => {
               </div>
             </Link>
             {/* 2nd icon */}
-            <div className="col-3">
+            <Link to="https://www.ajkerdeal.com/" className="col-3">
               <div
                 style={{ height: "100%", borderRadius: "3px" }}
                 className="row-3 p-1"
@@ -40,9 +40,9 @@ const Partner = () => {
                 </div>
                 <h6 className="text-center text-sm">Ajker Deal</h6>
               </div>
-            </div>
+            </Link>
             {/* 3rd icon */}
-            <div className="col-3">
+            <Link to="https://bikroy.com/" className="col-3">
               <div
                 style={{ height: "100%", borderRadius: "3px" }}
                 className="row-3 p-1"
@@ -52,9 +52,9 @@ const Partner = () => {
                 </div>
                 <h6 className="text-center text-sm">Bikroy</h6>
               </div>
-            </div>
+            </Link>
             {/* 4th icon */}
-            <div className="col-3">
+            <Link to="https://othoba.com/" className="col-3">
               <div
                 style={{ height: "100%", borderRadius: "3px" }}
                 className="row-3 p-1"
@@ -64,7 +64,7 @@ const Partner = () => {
                 </div>
                 <h6 className="text-center text-sm">Othoba</h6>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
