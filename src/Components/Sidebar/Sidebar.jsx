@@ -7,7 +7,7 @@ import { FaMoneyBills } from "react-icons/fa6";
 import { FiUserPlus } from "react-icons/fi";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { useContext, useRef } from "react";
-import { AuthContext } from "../../AuthProvider";
+import AuthContext from "../../AuthContext";
 import { Link } from "react-router-dom";
 import useMember from "../../Hooks/useMember";
 

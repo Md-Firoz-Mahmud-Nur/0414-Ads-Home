@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+// import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
   GoogleAuthProvider,
@@ -11,8 +12,9 @@ import {
 } from "firebase/auth";
 import auth from "../Firebase.config";
 import useAxiosPublic from "./Hooks/useAxiosPublic";
+import AuthContext from "./AuthContext";
 
-export const AuthContext = createContext(null);
+// export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

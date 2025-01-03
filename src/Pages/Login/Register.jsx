@@ -3,7 +3,7 @@ import Logo from "../../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
-import { AuthContext } from "../../AuthProvider";
+import AuthContext from "../../AuthContext";
 // import { uploadImage } from "../../Hooks/imageUpload";
 
 const Register = () => {

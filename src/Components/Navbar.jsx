@@ -2,7 +2,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { TbLogin, TbLogout } from "react-icons/tb";
 import Sidebar from "./Sidebar/Sidebar";
 import { useContext } from "react";
-import { AuthContext } from "../AuthProvider";
+import AuthContext from "../AuthContext";
 import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import useMember from "../Hooks/useMember";

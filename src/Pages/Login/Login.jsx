@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../AuthProvider";
+import AuthContext from "../../AuthContext";
 import { toast } from "react-toastify";
 
 const Login = () => {
