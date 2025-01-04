@@ -18,7 +18,7 @@ const Login = () => {
     const password = e.target.password.value;
     console.log(email, password);
     login(email, password).then((result) => {
-      console.log(result);
+      console.log("result From login",result);
       toast.success("Login successful. Please Wait for Redirect", {
         autoClose: 1500,
       });

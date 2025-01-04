@@ -70,19 +70,33 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log("auth 73", currentUser);
+
       setUser(currentUser);
-      setLoading(false);
+      // setLoading(false);
       if (currentUser) {
         const userInfo = { email: currentUser.email };
+        console.log(userInfo);
+
         axiosPublic.post("/jwt", userInfo).then((res) => {
+          console.log("jwt hit");
+          console.log(res);
+          console.log("res hit");
+
           if (res.data.token) {
+            console.log("try to set token");
+
             localStorage.setItem("access-token", res.data.token);
+            console.log("token set done");
+
             setLoading(false);
           }
         });
       } else {
+        console.log("try to remove token");
         localStorage.removeItem("access-token");
         setLoading(false);
+        console.log("token remove done");
       }
     });
     return () => {
