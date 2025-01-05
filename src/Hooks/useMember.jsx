@@ -10,7 +10,6 @@ const useMember = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure.get(`/users/member/${user.email}`);
-      console.log("res from hook",res.data);
 
       return res?.data;
     },

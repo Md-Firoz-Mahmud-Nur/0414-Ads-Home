@@ -18,7 +18,6 @@ const Register = () => {
     const password = e.target.password.value;
     const reEnterPassword = e.target.reEnterPassword.value;
     const refer = e.target.refer.value;
-    console.log(name, email, mobileNumber, password, reEnterPassword, refer);
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters");
       return;
@@ -37,9 +36,13 @@ const Register = () => {
       return;
     }
 
+    if (!(password === reEnterPassword)) {
+      toast.error("Enter Same Password");
+      return;
+    }
+
     try {
-      const result = await createNewUser(email, password);
-      console.log(result);
+      await createNewUser(email, password);
 
       const newUser = {
         name,
@@ -62,9 +65,6 @@ const Register = () => {
         body: JSON.stringify(newUser),
       });
 
-      if (response.ok) {
-        console.log("user added successfully");
-      }
       if (!response.ok) {
         throw new Error("Failed to save user to database");
       }

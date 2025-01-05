@@ -17,7 +17,6 @@ const Navbar = () => {
       .catch(() => {});
   };
   const [isMember] = useMember();
-  console.log(isMember);
 
   return (
     <div className="h-16 bg-blue-500">
