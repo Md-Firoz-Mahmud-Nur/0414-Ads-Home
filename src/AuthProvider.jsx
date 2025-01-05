@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
   GoogleAuthProvider,
@@ -14,8 +13,6 @@ import auth from "../Firebase.config";
 import useAxiosPublic from "./Hooks/useAxiosPublic";
 import AuthContext from "./AuthContext";
 
-// export const AuthContext = createContext(null);
-
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,19 +22,6 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-
-  // const updateExistingUserProfile = (name, photoUrl) => {
-  //   updateProfile(auth.currentUser, {
-  //     displayName: name,
-  //     photoURL: photoUrl,
-  //   })
-  //     .then((result) => {
-  //       return result;
-  //     })
-  //     .catch((error) => {
-  //       throw error;
-  //     });
-  // };
 
   const updateExistingUserProfile = (name) => {
     updateProfile(auth.currentUser, {
@@ -70,33 +54,19 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("auth 73", currentUser);
-
       setUser(currentUser);
-      // setLoading(false);
+      setLoading(false);
       if (currentUser) {
         const userInfo = { email: currentUser.email };
-        console.log(userInfo);
-
         axiosPublic.post("/jwt", userInfo).then((res) => {
-          console.log("jwt hit");
-          console.log(res);
-          console.log("res hit");
-
           if (res.data.token) {
-            console.log("try to set token");
-
             localStorage.setItem("access-token", res.data.token);
-            console.log("token set done");
-
             setLoading(false);
           }
         });
       } else {
-        console.log("try to remove token");
         localStorage.removeItem("access-token");
         setLoading(false);
-        console.log("token remove done");
       }
     });
     return () => {
