@@ -5,10 +5,30 @@ import { useContext } from "react";
 import AuthContext from "../AuthContext";
 import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
-import useMember from "../Hooks/useMember";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../Hooks/useAuth";
+// import { useQuery } from "@tanstack/react-query";
+// import useMember from "../Hooks/useMember";
 
 const Navbar = () => {
-  const { user, signOutUser, setUser } = useContext(AuthContext);
+  const { user, signOutUser, setUser, setRole } = useContext(AuthContext);
+    const { loading } = useAuth();
+
+  const { data: role = "", isLoading } = useQuery({
+    queryKey: ["role", user?.email],
+    enabled: !loading && !!user,
+    // enabled: !!user,
+    queryFn: async () => {
+      const { data } = await axiosPublic.get(`/users/navbar/${user?.email}`);
+      console.log(data);
+      setRole(data);
+
+      return data;
+    },
+  });
+
+
   const signOut = () => {
     signOutUser()
       .then(() => {
@@ -16,7 +36,15 @@ const Navbar = () => {
       })
       .catch(() => {});
   };
-  const [isMember] = useMember();
+
+  // const [isMember] = useMember();
+
+  const axiosPublic = useAxiosPublic();
+  axiosPublic.get("/users/navbar/:email");
+
+  console.log(user?.email);
+
+  console.log("role", role, isLoading);
 
   return (
     <div className="h-16 bg-blue-500">
@@ -26,10 +54,10 @@ const Navbar = () => {
             <Sidebar></Sidebar>
             <div className="flex flex-col gap-1 pb-1">
               <h1 className="font-bold">
-                {isMember?.name || "log in to see Name"}
+                {role?.name || "log in to see Name"}
               </h1>
               <h1 className="rounded-full bg-white px-2 py-0.5 text-black">
-                {user ? isMember?.balance : "Tap to balance"}
+                {user ? role?.balance : "Tap to balance"}
               </h1>
             </div>
           </div>

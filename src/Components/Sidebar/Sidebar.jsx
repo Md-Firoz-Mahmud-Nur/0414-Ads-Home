@@ -9,10 +9,9 @@ import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { useContext, useRef } from "react";
 import AuthContext from "../../AuthContext";
 import { Link } from "react-router-dom";
-import useMember from "../../Hooks/useMember";
 
 const Sidebar = () => {
-  const { user, signOutUser, setUser } = useContext(AuthContext);
+  const { user, signOutUser, setUser, role } = useContext(AuthContext);
   const drawerRef = useRef(null);
 
   const handleCloseDrawer = () => {
@@ -28,7 +27,6 @@ const Sidebar = () => {
       })
       .catch(() => {});
   };
-  const [isMember] = useMember();
 
   return (
     <div className="drawer z-10 w-10">
@@ -62,8 +60,8 @@ const Sidebar = () => {
                 alt=""
               />
               <div>
-                <p> {user ? isMember?.mobileNumber : ""}</p>
-                <p> {user ? isMember?.balance : ""}</p>
+                <p> {user ? role?.mobileNumber : ""}</p>
+                <p> {user ? role?.balance : ""}</p>
               </div>
             </div>
             <TbXboxX

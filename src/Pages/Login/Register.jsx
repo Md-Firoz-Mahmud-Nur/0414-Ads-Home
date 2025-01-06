@@ -4,7 +4,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext } from "react";
 import AuthContext from "../../AuthContext";
-// import { uploadImage } from "../../Hooks/imageUpload";
 
 const Register = () => {
   const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);
@@ -43,6 +42,7 @@ const Register = () => {
 
     try {
       await createNewUser(email, password);
+      await updateExistingUserProfile(name);
 
       const newUser = {
         name,
@@ -68,8 +68,6 @@ const Register = () => {
       if (!response.ok) {
         throw new Error("Failed to save user to database");
       }
-
-      await updateExistingUserProfile(name);
 
       toast.success("Registration successful. Redirecting to home page...", {
         autoClose: 1500,

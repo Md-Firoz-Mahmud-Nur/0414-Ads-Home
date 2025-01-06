@@ -15,6 +15,7 @@ import AuthContext from "./AuthContext";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [role, setRole] = useState("");
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
 
@@ -83,6 +84,8 @@ const AuthProvider = ({ children }) => {
     signOutUser,
     googleLogin,
     setUser,
+    setRole,
+    role,
   };
 
   return (
