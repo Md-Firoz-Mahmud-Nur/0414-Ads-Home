@@ -2,13 +2,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../../AuthContext";
 
 const Register = () => {
   const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
   const handleRegister = async (e) => {
     e.preventDefault();
     const name = e.target.fullName.value;
@@ -67,15 +68,21 @@ const Register = () => {
 
       if (!response.ok) {
         throw new Error("Failed to save user to database");
+      } else {
+        setShowModal(true);
+        setTimeout(() => {
+          setShowModal(false);
+          toast.success(
+            "Registration successful. Redirecting to home page...",
+            {
+              autoClose: 1500,
+            },
+          );
+          setTimeout(() => {
+            navigate(location?.state ? location.state : "/");
+          }, 1500);
+        }, 2000);
       }
-
-      toast.success("Registration successful. Redirecting to home page...", {
-        autoClose: 1500,
-      });
-
-      setTimeout(() => {
-        navigate(location?.state ? location.state : "/");
-      }, 1500);
     } catch (error) {
       toast.error(error.message);
     }
@@ -172,6 +179,15 @@ const Register = () => {
         </p>
       </div>
       <ToastContainer />
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="h-[50vh] rounded bg-white p-6 shadow-lg">
+            <h2 className="mb-2 flex h-full items-center justify-center text-xl font-bold">
+              You have rewarded Taka 50 for the first time register
+            </h2>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
