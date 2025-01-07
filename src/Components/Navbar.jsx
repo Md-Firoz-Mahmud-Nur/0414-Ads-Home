@@ -8,26 +8,21 @@ import { IoHomeOutline } from "react-icons/io5";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../Hooks/useAuth";
-// import { useQuery } from "@tanstack/react-query";
-// import useMember from "../Hooks/useMember";
 
 const Navbar = () => {
   const { user, signOutUser, setUser, setRole } = useContext(AuthContext);
-    const { loading } = useAuth();
+  const { loading } = useAuth();
+  const axiosPublic = useAxiosPublic();
 
-  const { data: role = "", isLoading } = useQuery({
+  const { data: role = "" } = useQuery({
     queryKey: ["role", user?.email],
     enabled: !loading && !!user,
-    // enabled: !!user,
     queryFn: async () => {
       const { data } = await axiosPublic.get(`/users/navbar/${user?.email}`);
-      console.log(data);
       setRole(data);
-
       return data;
     },
   });
-
 
   const signOut = () => {
     signOutUser()
@@ -37,15 +32,6 @@ const Navbar = () => {
       .catch(() => {});
   };
 
-  // const [isMember] = useMember();
-
-  const axiosPublic = useAxiosPublic();
-  axiosPublic.get("/users/navbar/:email");
-
-  console.log(user?.email);
-
-  console.log("role", role, isLoading);
-
   return (
     <div className="h-16 bg-blue-500">
       <div className="container mx-auto flex justify-between text-white">
@@ -54,8 +40,7 @@ const Navbar = () => {
             <Sidebar></Sidebar>
             <div className="flex max-w-[calc(100vw-212px)] flex-col gap-1 pb-1">
               <h1 className="truncate font-bold">
-                {role?.name ||
-                  "log in to see Name"}
+                {role?.name || "log in to see Name"}
               </h1>
               <h1 className="truncate rounded-full bg-white px-2 py-0.5 text-black">
                 {user ? role?.balance : "Tap to balance"}
