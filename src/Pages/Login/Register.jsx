@@ -193,12 +193,12 @@ const Register = () => {
         </p>
       </div>
       <ToastContainer />
-      {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      {!showModal && (
+        <div className="fixed inset-0 z-20 flex items-center justify-center bg-black bg-opacity-50">
           <img
             src={Congratulation}
             alt="Congratulation"
-            className="h-auto w-10/12"
+            className="w-10/12 rounded-xl border border-black shadow-lg shadow-blue-300"
           />
         </div>
       )}
