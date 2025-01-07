@@ -2,7 +2,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { useContext, useState } from "react";
 import AuthContext from "../../AuthContext";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -88,6 +89,7 @@ const Login = () => {
           now
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };
