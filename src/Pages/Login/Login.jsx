@@ -17,15 +17,21 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    login(email, password).then(() => {
-      toast.success("Login successful. Please Wait for Redirect", {
-        autoClose: 1500,
-      });
-      setTimeout(() => {
+    login(email, password)
+      .then(() => {
+        toast.success("Login successful. Please Wait for Redirect", {
+          autoClose: 1500,
+        });
+        setTimeout(() => {
+          setIsLoading(false);
+          navigate(location?.state ? location.state : "/");
+        }, 1500);
+      })
+      .catch(() => {
         setIsLoading(false);
-        navigate(location?.state ? location.state : "/");
-      }, 1500);
-    });
+        e.target.reset()
+        toast.error("Login failed. Please check your Email and Password.");
+      });
   };
 
   return (
