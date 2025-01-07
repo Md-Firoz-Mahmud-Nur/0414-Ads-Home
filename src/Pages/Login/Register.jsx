@@ -11,7 +11,9 @@ const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const handleRegister = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     const name = e.target.fullName.value;
     const email = e.target.email.value;
@@ -85,6 +87,7 @@ const Register = () => {
         }, 2000);
       }
     } catch (error) {
+      setIsLoading(false)
       toast.error(error.message);
     }
   };
@@ -167,8 +170,18 @@ const Register = () => {
               />
             </label>
           </div>
-          <button className="hover:border-blue-500-500 btn btn-outline mt-5 border-2 border-blue-500 text-xl text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white">
-            Register Now
+          <button
+            className="hover:border-blue-500-500 btn btn-outline mt-5 border-2 border-blue-500 text-xl text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <span className="flex items-center">
+                <span className="loading loading-spinner loading-sm mr-2"></span>
+                Loading...
+              </span>
+            ) : (
+              "Register"
+            )}
           </button>
         </form>
         <p className="pt-4">
