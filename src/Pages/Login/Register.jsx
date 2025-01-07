@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext, useState } from "react";
 import AuthContext from "../../AuthContext";
+import Congratulation from "../../assets/Congratulation.jpeg";
 
 const Register = () => {
   const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);
@@ -181,11 +182,11 @@ const Register = () => {
       <ToastContainer />
       {showModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="h-[50vh] rounded bg-white p-6 shadow-lg">
-            <h2 className="mb-2 flex h-full items-center justify-center text-xl font-bold">
-              You have rewarded Taka 50 for the first time register
-            </h2>
-          </div>
+          <img
+            src={Congratulation}
+            alt="Congratulation"
+            className="h-auto w-10/12"
+          />
         </div>
       )}
     </div>
