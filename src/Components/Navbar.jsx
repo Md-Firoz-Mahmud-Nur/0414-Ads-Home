@@ -52,11 +52,12 @@ const Navbar = () => {
         <div className="flex h-16 items-center justify-center p-4">
           <div className="flex items-center justify-center gap-4">
             <Sidebar></Sidebar>
-            <div className="flex flex-col gap-1 pb-1">
-              <h1 className="font-bold">
-                {role?.name || "log in to see Name"}
+            <div className="flex max-w-[calc(100vw-212px)] flex-col gap-1 pb-1">
+              <h1 className="truncate font-bold">
+                {role?.name ||
+                  "log in to see Name"}
               </h1>
-              <h1 className="rounded-full bg-white px-2 py-0.5 text-black">
+              <h1 className="truncate rounded-full bg-white px-2 py-0.5 text-black">
                 {user ? role?.balance : "Tap to balance"}
               </h1>
             </div>
