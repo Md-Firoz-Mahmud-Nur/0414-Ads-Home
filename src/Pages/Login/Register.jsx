@@ -12,6 +12,24 @@ const Register = () => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const generateReferCode = async (email) => {
+    try {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(email);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("");
+      const referCode = hashHex.slice(0, 8).toUpperCase();
+      return referCode;
+    } catch (error) {
+      console.error("Error generating refer code:", error.message);
+      throw error;
+    }
+  };
+
   const handleRegister = async (e) => {
     setIsLoading(true);
     e.preventDefault();
@@ -20,7 +38,7 @@ const Register = () => {
     const mobileNumber = e.target.mobileNumber.value;
     const password = e.target.password.value;
     const reEnterPassword = e.target.reEnterPassword.value;
-    const refer = e.target.refer.value;
+    const referBy = e.target.refer.value;
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters");
       return;
@@ -45,7 +63,8 @@ const Register = () => {
     }
 
     try {
-      await createNewUser(email, password);
+      const newUserEmail = await createNewUser(email, password);
+      const referCode = await generateReferCode(newUserEmail.user.email);
       await updateExistingUserProfile(name);
 
       const newUser = {
@@ -53,8 +72,9 @@ const Register = () => {
         email,
         password,
         mobileNumber,
-        refer,
+        referBy,
         balance: 50,
+        referCode,
         createdAt: new Date(
           new Date().getTime() + 6 * 60 * 60 * 1000,
         ).toISOString(),
@@ -87,7 +107,7 @@ const Register = () => {
         }, 2000);
       }
     } catch (error) {
-      setIsLoading(false)
+      setIsLoading(false);
       toast.error(error.message);
     }
   };
