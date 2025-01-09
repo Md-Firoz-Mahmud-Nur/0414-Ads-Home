@@ -74,7 +74,7 @@ const Profile = () => {
             <div>
               <h3 className="text-sm text-gray-500">Created At</h3>
               <p className="text-lg font-semibold text-gray-700">
-                {formatDate(role?.createdAt)}
+                {role?.createdAt ? formatDate(role.createdAt) : "Loading..."}
               </p>
             </div>
           </div>
