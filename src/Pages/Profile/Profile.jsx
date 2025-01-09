@@ -2,8 +2,7 @@ import { useContext } from "react";
 import AuthContext from "../../AuthContext";
 
 const Profile = () => {
-  const { user, role } = useContext(AuthContext);
-  console.log(role, user);
+  const { role } = useContext(AuthContext);
 
   function formatDate(dateString) {
     const localDateString = dateString.replace("Z", "");

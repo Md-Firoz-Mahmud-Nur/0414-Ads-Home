@@ -46,7 +46,7 @@ const AdsHome = () => {
             </div>
             {/* 5th icon */}
             <div className="flex h-full justify-center p-1">
-              <Link className="flex flex-col items-center py-2" to="/myWork">
+              <Link className="flex flex-col items-center py-2" to="/profile">
                 <FiUser className="size-12 text-blue-500" />
                 <h6 className="text-center text-sm my-auto">Profile</h6>
               </Link>
