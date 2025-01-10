@@ -98,12 +98,18 @@ const Sidebar = () => {
               <span className="pl-2">Home</span>
             </Link>
           </li>
-          <li className="rounded-lg hover:bg-blue-200">
-            <Link to="/dashboard" onClick={handleCloseDrawer} className="pl-2">
-              <LuLayoutDashboard className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></LuLayoutDashboard>
-              <span className="pl-2">Dashboard</span>
-            </Link>
-          </li>
+          {isAdmin && (
+            <li className="rounded-lg hover:bg-blue-200">
+              <Link
+                to="/dashboard"
+                onClick={handleCloseDrawer}
+                className="pl-2"
+              >
+                <LuLayoutDashboard className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></LuLayoutDashboard>
+                <span className="pl-2">Dashboard</span>
+              </Link>
+            </li>
+          )}
           <li className="rounded-lg hover:bg-blue-200">
             <div className="pl-2">
               <FaMoneyBills className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></FaMoneyBills>
