@@ -14,8 +14,8 @@ const Navbar = () => {
   const { loading } = useAuth();
   const axiosPublic = useAxiosPublic();
 
-  const { data: role = "" } = useQuery({
-    queryKey: ["role", user?.email],
+  const { data: userDetails = "" } = useQuery({
+    queryKey: ["userDetails", user?.email],
     enabled: !loading && !!user,
     queryFn: async () => {
       const { data } = await axiosPublic.get(`/users/navbar/${user?.email}`);
@@ -40,10 +40,10 @@ const Navbar = () => {
             <Sidebar></Sidebar>
             <div className="flex max-w-[calc(100vw-212px)] flex-col gap-1 pb-1">
               <h1 className="truncate font-bold">
-                {role?.name || "log in to see Name"}
+                {userDetails?.name || "log in to see Name"}
               </h1>
               <h1 className="truncate rounded-full bg-white px-2 py-0.5 text-black">
-                {user ? role?.balance : "Tap to balance"}
+                {user ? userDetails?.balance : "Tap to balance"}
               </h1>
             </div>
           </div>
