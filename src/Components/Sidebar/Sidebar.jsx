@@ -9,6 +9,7 @@ import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { useContext, useRef } from "react";
 import AuthContext from "../../AuthContext";
 import { Link } from "react-router-dom";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 const Sidebar = () => {
   const { user, signOutUser, setUser, role } = useContext(AuthContext);
@@ -91,6 +92,12 @@ const Sidebar = () => {
             <Link to="/" onClick={handleCloseDrawer} className="pl-2">
               <IoHomeOutline className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></IoHomeOutline>
               <span className="pl-2">Home</span>
+            </Link>
+          </li>
+          <li className="rounded-lg hover:bg-blue-200">
+            <Link to="/dashboard" onClick={handleCloseDrawer} className="pl-2">
+              <LuLayoutDashboard  className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></LuLayoutDashboard >
+              <span className="pl-2">Dashboard</span>
             </Link>
           </li>
           <li className="rounded-lg hover:bg-blue-200">
