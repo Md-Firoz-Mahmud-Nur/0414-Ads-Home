@@ -15,7 +15,7 @@ import useAdmin from "../../Hooks/useAdmin";
 const Sidebar = () => {
   const { user, signOutUser, setUser, role } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
-  console.log(isAdmin);
+
 
   const drawerRef = useRef(null);
 
