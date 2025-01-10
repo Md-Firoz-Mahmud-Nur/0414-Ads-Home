@@ -10,9 +10,13 @@ import { useContext, useRef } from "react";
 import AuthContext from "../../AuthContext";
 import { Link } from "react-router-dom";
 import { LuLayoutDashboard } from "react-icons/lu";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Sidebar = () => {
   const { user, signOutUser, setUser, role } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
+  console.log(isAdmin);
+
   const drawerRef = useRef(null);
 
   const handleCloseDrawer = () => {
@@ -96,7 +100,7 @@ const Sidebar = () => {
           </li>
           <li className="rounded-lg hover:bg-blue-200">
             <Link to="/dashboard" onClick={handleCloseDrawer} className="pl-2">
-              <LuLayoutDashboard  className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></LuLayoutDashboard >
+              <LuLayoutDashboard className="size-10 rounded-full bg-blue-500 p-1.5 text-white"></LuLayoutDashboard>
               <span className="pl-2">Dashboard</span>
             </Link>
           </li>
