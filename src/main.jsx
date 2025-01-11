@@ -75,14 +75,6 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
-      {
-        path: "/dashboard/deleteLink",
-        element: (
-          <AdminRoute>
-            <DeleteLink></DeleteLink>{" "}
-          </AdminRoute>
-        ),
-      },
     ],
   },
 ]);
