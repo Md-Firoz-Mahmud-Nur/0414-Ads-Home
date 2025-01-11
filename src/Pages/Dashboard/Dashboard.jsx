@@ -7,8 +7,10 @@ const Dashboard = () => {
         <Link to="/dashboard/addLink" className="btn btn-success text-white">
           Add Link
         </Link>
-        <Link className="btn btn-info text-white">View Links</Link>
-        <Link to="/" className="btn btn-error text-white">
+        <Link to="/dashboard/viewLinks" className="btn btn-info text-white">
+          View Links
+        </Link>
+        <Link to="/dashboard/deleteLink" className="btn btn-error text-white">
           Delete Link
         </Link>
       </div>

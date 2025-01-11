@@ -13,6 +13,9 @@ import Profile from "./Pages/Profile/Profile";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import AdminRoute from "./AdminRoute";
+import AddLink from "./Pages/Dashboard/AddLink";
+import ViewLinks from "./Pages/Dashboard/ViewLinks";
+import DeleteLink from "./Pages/Dashboard/DeleteLink";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +56,30 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <Dashboard></Dashboard>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/addLink",
+        element: (
+          <AdminRoute>
+            <AddLink></AddLink>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/viewLinks",
+        element: (
+          <AdminRoute>
+            <ViewLinks></ViewLinks>{" "}
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/deleteLink",
+        element: (
+          <AdminRoute>
+            <DeleteLink></DeleteLink>{" "}
           </AdminRoute>
         ),
       },
