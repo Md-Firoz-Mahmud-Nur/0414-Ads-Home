@@ -15,7 +15,6 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import AdminRoute from "./AdminRoute";
 import AddLink from "./Pages/Dashboard/AddLink";
 import ViewLinks from "./Pages/Dashboard/ViewLinks";
-import DeleteLink from "./Pages/Dashboard/DeleteLink";
 
 const router = createBrowserRouter([
   {
