@@ -1,10 +1,27 @@
+import { useState } from "react";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+
 const AddLink = () => {
-  const HandleAddLink=(e) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const axiosSecure = useAxiosSecure();
+
+  const HandleAddLink = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
-    console.log(e.target.name.value);
-    console.log(e.target.url.value);
-    console.log(e.target.amount.value);
-  }
+    const name = e.target.name.value;
+    const url = e.target.url.value;
+    const amount = e.target.amount.value;
+    const data = {
+      name,
+      url,
+      amount,
+    };
+
+    console.log(data);
+    const { upload } = await axiosSecure.post(`/addLinkData`, data);
+    console.log(upload);
+  };
+
   return (
     <div className="flex min-h-[calc(100vh-64px)] items-center bg-[#EDEDF5] px-2 pt-8">
       <div className="px- container mx-auto flex flex-col gap-6 rounded-lg bg-white p-6 shadow-md">
@@ -50,16 +67,16 @@ const AddLink = () => {
           </div>
           <button
             className="hover:border-blue-500-500 btn btn-outline mt-5 border-2 border-blue-500 text-xl text-blue-500 hover:border-blue-500 hover:bg-blue-500 hover:text-white"
-            // disabled={isLoading}
+            disabled={isLoading}
           >
-            {/* {isLoading ? (
+            {isLoading ? (
               <span className="flex items-center">
                 <span className="loading loading-spinner loading-sm mr-2"></span>
                 Loading...
               </span>
             ) : (
-              "Login"
-            )} */}
+              "Add Link"
+            )}
           </button>
         </form>
       </div>
