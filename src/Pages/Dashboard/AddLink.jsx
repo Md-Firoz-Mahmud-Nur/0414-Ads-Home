@@ -1,5 +1,7 @@
 import { useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddLink = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,9 +19,23 @@ const AddLink = () => {
       amount,
     };
 
-    console.log(data);
-    const { upload } = await axiosSecure.post(`/addLinkData`, data);
-    console.log(upload);
+    const response = await axiosSecure.post(`/addLinkData`, data);
+
+    if (response.data.message === "Link already exists.") {
+      toast.error("Link already exists.");
+      e.target.url.value = null;
+      setIsLoading(false);
+      return;
+    }
+
+    if (response.data.insertedId) {
+      toast.success("Link added successfully");
+      e.target.name.value = null;
+      e.target.url.value = null;
+      e.target.amount.value = null;
+      setIsLoading(false);
+      return;
+    }
   };
 
   return (
@@ -80,6 +96,7 @@ const AddLink = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };
