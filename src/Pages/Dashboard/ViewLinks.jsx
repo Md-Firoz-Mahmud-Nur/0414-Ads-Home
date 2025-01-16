@@ -45,16 +45,6 @@ const ViewLinks = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        // axiosSecure.delete(`/users/${user._id}`).then((res) => {
-        //   if (res.data.deletedCount > 0) {
-        //     refetch();
-        //     Swal.fire({
-        //       title: "Deleted!",
-        //       text: "Your file has been deleted.",
-        //       icon: "success",
-        //     });
-        //   }
-        // });
         deleteLinkMutation.mutate(id);
       }
     });
@@ -64,50 +54,47 @@ const ViewLinks = () => {
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="p-4">
-      <h1 className="mb-4 text-center text-2xl font-semibold">View Links</h1>
-      {viewLinks.links.length === 0 ? (
-        <p className="text-center">No link available.</p>
-      ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto border border-gray-200">
-            <thead>
-              <tr className="bg-gray-100 text-left">
-                <th className="px-4 py-2">Name</th>
-                <th className="px-4 py-2">Amount</th>
-                <th className="px-4 py-2">URL</th>
-                <th className="px-4 py-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {viewLinks.links.map((link) => (
-                <tr key={link._id} className="border-t">
-                  <td className="px-4 py-2">{link.name}</td>
-                  <td className="px-4 py-2">
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-500 underline"
-                    >
-                      {link.url}
-                    </a>
-                  </td>
-                  <td className="px-4 py-2">{link.amount}</td>
-                  <td className="px-4 py-2">
-                    <button
-                      onClick={() => handleDelete(link._id)}
-                      className="rounded bg-red-500 px-3 py-1 text-white hover:bg-red-600"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+    <div className="flex min-h-[calc(100vh-64px)] flex-col items-center justify-start bg-[#EDEDF5] px-2">
+      <h1 className="pt-4 text-center text-2xl font-semibold">View Links</h1>
+      <div className="container mx-auto my-4 flex max-h-min flex-col items-center rounded-2xl border p-0">
+        {viewLinks.links.length === 0 ? (
+          <p className="text-center">No link available.</p>
+        ) : (
+          <div className="w-full space-y-4">
+            {viewLinks.links.map((link) => (
+              <div
+                key={link._id}
+                className="flex flex-col items-start justify-between space-y-2 rounded-lg border border-gray-200 bg-white p-2 shadow-md"
+              >
+                <div className="flex w-full justify-between">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800">
+                      {link.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      Amount: {link.amount}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => handleDelete(link._id)}
+                    className="rounded bg-red-500 px-3 py-1 text-white hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </div>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="break-all text-blue-500 underline"
+                >
+                  {link.url}
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
