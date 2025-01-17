@@ -6,7 +6,8 @@ import Loader from "../../Components/Loader";
 
 const MyWork = () => {
   const axiosSecure = useAxiosSecure();
-  const [modalLink, setModalLink] = useState("");
+  const [modalInfo, setModalInfo] = useState("");
+  const [isClicked, setIsClicked] = useState(true);
 
   const {
     data: viewLinks = { links: [] },
@@ -22,7 +23,6 @@ const MyWork = () => {
   });
 
   if (isLoading) return <Loader></Loader>;
-  // if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
@@ -47,7 +47,7 @@ const MyWork = () => {
                   <div>Survey</div>
                   <button
                     onClick={() => {
-                      setModalLink(link.url);
+                      setModalInfo(link);
                       document.getElementById("clickHereModal").showModal();
                     }}
                     className="btn btn-outline text-white hover:bg-white hover:text-black"
@@ -85,19 +85,43 @@ const MyWork = () => {
           </div>
 
           <div className="mt-6 flex items-center justify-around">
-            <a href={modalLink} target="_blank" rel="noopener noreferrer">
-              <button className="btn btn-success text-white">
-                Click Here to Start
-              </button>
-            </a>
-            <div className="modal-action mt-0">
+            {isClicked ? (
+              <a
+                onClick={() => {
+                  setIsClicked(false);
+                }}
+                href={modalInfo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="btn btn-success text-white">
+                  Click Here to Start
+                </button>
+              </a>
+            ) : (
+              <div>Image upload</div>
+            )}
+            <div
+              className="modal-action mt-0"
+              onClick={() => {
+                setModalInfo("");
+                setIsClicked(true);
+              }}
+            >
               <form method="dialog">
                 <button className="btn btn-error text-white">Close</button>
               </form>
             </div>
           </div>
         </div>
-        <form method="dialog" className="modal-backdrop">
+        <form
+          method="dialog"
+          className="modal-backdrop"
+          onClick={() => {
+            setModalInfo("");
+            setIsClicked(true);
+          }}
+        >
           <button>close</button>
         </form>
       </dialog>
