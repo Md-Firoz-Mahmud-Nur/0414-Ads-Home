@@ -66,7 +66,7 @@ const ViewLinks = () => {
                 key={link._id}
                 className="flex flex-col items-start justify-between space-y-2 rounded-lg border border-gray-200 bg-white p-2 shadow-md"
               >
-                <div className="flex w-full justify-between">
+                <div className="flex w-full items-center justify-between">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800">
                       {link.name}
