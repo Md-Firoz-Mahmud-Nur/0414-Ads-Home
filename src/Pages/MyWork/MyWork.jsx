@@ -58,14 +58,37 @@ const MyWork = () => {
       </div>
 
       <dialog id="clickHereModal" className="modal">
-        <div className="modal-box">
-          <a href={modalLink} target="_blank" rel="noopener noreferrer">
-            <button className="btn btn-primary">Continue</button>
-          </a>
-          <div className="modal-action">
-            <form method="dialog">
-              <button className="btn">Close</button>
-            </form>
+        <div className="modal-box p-4">
+          <div className="mx-auto max-w-md rounded-lg text-gray-800">
+            <h2 className="mb-4 text-center text-2xl font-semibold text-blue-600">
+              Instructions
+            </h2>
+            <ul className="space-y-4 text-left">
+              <li>
+                <span className="font-medium">Step 1:</span> নিচের বাটনে ক্লিক
+                করলে আপনাকে একটি ওয়েবসাইটে নিয়ে যাবে যেখানে আপনাকে ২-৩ বার
+                স্পেন/ইমপ্রেস বা বক্স ওপেন করতে বলবে।
+              </li>
+              <li>
+                <span className="font-medium">Step 2:</span> এর পরে আপনাকে একটা
+                সাইনআপ পেজ দিবে। ঠিক ভাবে সাইন আপ করে নিন।
+              </li>
+              <li>
+                <span className="font-medium">Step 3:</span> সাইন আপ সম্পূর্ণ
+                হয়ে গেলে একটি স্ক্রিনশট নিন এবং সেটি চেক বার এ জমা দিন।
+              </li>
+            </ul>
+          </div>
+
+          <div className="flex items-center justify-around mt-6">
+            <a href={modalLink} target="_blank" rel="noopener noreferrer">
+              <button className="btn btn-success text-white">Click Here to Start</button>
+            </a>
+            <div className="modal-action mt-0">
+              <form method="dialog">
+                <button className="btn btn-error text-white">Close</button>
+              </form>
+            </div>
           </div>
         </div>
         <form method="dialog" className="modal-backdrop">
