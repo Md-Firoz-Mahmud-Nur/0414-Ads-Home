@@ -1,9 +1,11 @@
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 const MyWork = () => {
   const axiosSecure = useAxiosSecure();
+  const [modalLink, setModalLink] = useState("");
 
   const {
     data: viewLinks = { links: [] },
@@ -25,7 +27,6 @@ const MyWork = () => {
     <div className="min-h-[calc(100vh-64px)] bg-[#EDEDF5]">
       <div className="container mx-auto flex flex-col gap-6 px-1 py-6">
         {/* card 1 */}
-
         {viewLinks.links.length === 0 ? (
           <p className="text-center">No link available.</p>
         ) : (
@@ -40,7 +41,13 @@ const MyWork = () => {
                 </div>
                 <div className="flex items-center justify-between">
                   <div>Survey</div>
-                  <button className="btn btn-outline text-white hover:bg-white hover:text-black">
+                  <button
+                    onClick={() => {
+                      setModalLink(link.url);
+                      document.getElementById("clickHereModal").showModal();
+                    }}
+                    className="btn btn-outline text-white hover:bg-white hover:text-black"
+                  >
                     Click Here
                   </button>
                 </div>
@@ -49,6 +56,22 @@ const MyWork = () => {
           </div>
         )}
       </div>
+
+      <dialog id="clickHereModal" className="modal">
+        <div className="modal-box">
+          <a href={modalLink} target="_blank" rel="noopener noreferrer">
+            <button className="btn btn-primary">Continue</button>
+          </a>
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn">Close</button>
+            </form>
+          </div>
+        </div>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 };
