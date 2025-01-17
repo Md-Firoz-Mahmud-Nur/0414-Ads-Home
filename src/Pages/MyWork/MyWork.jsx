@@ -28,7 +28,9 @@ const MyWork = () => {
       <div className="container mx-auto flex flex-col gap-6 px-1 py-6">
         {/* card 1 */}
         {viewLinks.links.length === 0 ? (
-          <p className="text-center">No link available.</p>
+          <p className="flex h-full min-h-[calc(100vh-112px)] items-center justify-center text-2xl font-semibold">
+            No link available.
+          </p>
         ) : (
           <div className="w-full space-y-4">
             {viewLinks.links.map((link) => (
@@ -80,9 +82,11 @@ const MyWork = () => {
             </ul>
           </div>
 
-          <div className="flex items-center justify-around mt-6">
+          <div className="mt-6 flex items-center justify-around">
             <a href={modalLink} target="_blank" rel="noopener noreferrer">
-              <button className="btn btn-success text-white">Click Here to Start</button>
+              <button className="btn btn-success text-white">
+                Click Here to Start
+              </button>
             </a>
             <div className="modal-action mt-0">
               <form method="dialog">
