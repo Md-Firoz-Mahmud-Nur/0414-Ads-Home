@@ -1,6 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Loader from "../../Components/Loader";
 
 const ViewLinks = () => {
   const axiosSecure = useAxiosSecure();
@@ -50,7 +51,7 @@ const ViewLinks = () => {
     });
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader></Loader>;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (

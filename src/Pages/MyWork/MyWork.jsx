@@ -2,6 +2,7 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import Loader from "../../Components/Loader";
 
 const MyWork = () => {
   const axiosSecure = useAxiosSecure();
@@ -20,7 +21,8 @@ const MyWork = () => {
     },
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader></Loader>;
+  // if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
