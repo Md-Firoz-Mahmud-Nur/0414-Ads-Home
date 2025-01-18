@@ -20,9 +20,9 @@ const MyWork = () => {
     isError,
     error,
   } = useQuery({
-    queryKey: ["viewLinks"],
+    queryKey: ["viewLinks", user.email],
     queryFn: async () => {
-      const res = await axiosSecure.get("getAddedLinks");
+      const res = await axiosSecure.get(`/getAddedLinksUser/${user.email}`);
       return res.data;
     },
   });

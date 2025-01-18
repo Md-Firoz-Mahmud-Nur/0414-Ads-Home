@@ -15,7 +15,7 @@ const ViewLinks = () => {
   } = useQuery({
     queryKey: ["viewLinks"],
     queryFn: async () => {
-      const res = await axiosSecure.get("getAddedLinks");
+      const res = await axiosSecure.get("getAddedLinksAdmin");
       return res.data;
     },
   });
