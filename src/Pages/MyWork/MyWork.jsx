@@ -5,14 +5,12 @@ import { useContext, useState } from "react";
 import Loader from "../../Components/Loader";
 import { uploadImage } from "../../Hooks/imageUpload";
 import AuthContext from "../../AuthContext";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const MyWork = () => {
   const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
-  const axiosPublic = useAxiosPublic();
   const [modalInfo, setModalInfo] = useState("");
   const [isClicked, setIsClicked] = useState(true);
 
@@ -32,7 +30,7 @@ const MyWork = () => {
   const handleSubmitPicture = async (e) => {
     e.preventDefault();
     const modalWorkId = modalInfo._id;
-    const { data } = await axiosPublic.get(
+    const { data } = await axiosSecure.get(
       `/checkWorkExist/${user.email}/${modalWorkId}`,
     );
 
@@ -48,11 +46,18 @@ const MyWork = () => {
     const photoUrl = photo ? await uploadImage(photo) : "";
     const userImageSubmission = { email: user.email, modalInfo, photoUrl };
     console.log(userImageSubmission);
-    const userWorkImageSubmission = axiosPublic.post(
+    const userWorkImageSubmission = await axiosSecure.post(
       "/userWorkImageSubmission",
       userImageSubmission,
     );
-    console.log(userWorkImageSubmission);
+    if (
+      userWorkImageSubmission.data.message === "Work submitted successfully."
+    ) {
+      document.getElementById("clickHereModal").close();
+      toast.success("Work submitted successfully.");
+      setModalInfo("");
+      setIsClicked(true);
+    }
   };
 
   if (isLoading) return <Loader></Loader>;
