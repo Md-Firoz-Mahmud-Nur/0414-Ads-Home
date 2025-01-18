@@ -19,6 +19,7 @@ const MyWork = () => {
     isLoading,
     isError,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["viewLinks", user.email],
     queryFn: async () => {
@@ -53,6 +54,7 @@ const MyWork = () => {
     if (
       userWorkImageSubmission.data.message === "Work submitted successfully."
     ) {
+      refetch();
       document.getElementById("clickHereModal").close();
       toast.success("Work submitted successfully.");
       setModalInfo("");
