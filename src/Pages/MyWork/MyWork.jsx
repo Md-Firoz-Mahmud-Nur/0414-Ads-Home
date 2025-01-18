@@ -1,11 +1,16 @@
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Loader from "../../Components/Loader";
+import { uploadImage } from "../../Hooks/imageUpload";
+import AuthContext from "../../AuthContext";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const MyWork = () => {
+  const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const [modalInfo, setModalInfo] = useState("");
   const [isClicked, setIsClicked] = useState(true);
 
@@ -22,9 +27,17 @@ const MyWork = () => {
     },
   });
 
-  const handleSubmitPicture = (e) => {
+  const handleSubmitPicture = async (e) => {
     e.preventDefault();
-    console.log("nulllll");
+    const photo = e.target.photo.files[0];
+    const photoUrl = photo ? await uploadImage(photo) : "";
+    const userImageSubmission = { email: user.email, modalInfo, photoUrl };
+    console.log(userImageSubmission);
+    const userWorkImageSubmission = axiosPublic.post(
+      "/userWorkImageSubmission",
+      userImageSubmission,
+    );
+    console.log(userWorkImageSubmission);
   };
 
   if (isLoading) return <Loader></Loader>;
@@ -154,17 +167,6 @@ const MyWork = () => {
                 </div>
               </div>
             )}
-            {/* <div
-              className="modal-action mt-0"
-              onClick={() => {
-                setModalInfo("");
-                setIsClicked(true);
-              }}
-            >
-              <form method="dialog">
-                <button className="btn btn-error text-white">Close</button>
-              </form>
-            </div> */}
           </div>
         </div>
         <form
