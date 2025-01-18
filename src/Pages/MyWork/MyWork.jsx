@@ -6,6 +6,8 @@ import Loader from "../../Components/Loader";
 import { uploadImage } from "../../Hooks/imageUpload";
 import AuthContext from "../../AuthContext";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MyWork = () => {
   const { user } = useContext(AuthContext);
@@ -29,6 +31,19 @@ const MyWork = () => {
 
   const handleSubmitPicture = async (e) => {
     e.preventDefault();
+    const modalWorkId = modalInfo._id;
+    const { data } = await axiosPublic.get(
+      `/checkWorkExist/${user.email}/${modalWorkId}`,
+    );
+
+    if (data.exists) {
+      document.getElementById("clickHereModal").close();
+      toast.error("Already Submitted");
+      setModalInfo("");
+      setIsClicked(true);
+      return;
+    }
+
     const photo = e.target.photo.files[0];
     const photoUrl = photo ? await uploadImage(photo) : "";
     const userImageSubmission = { email: user.email, modalInfo, photoUrl };
@@ -154,12 +169,7 @@ const MyWork = () => {
                     setIsClicked(true);
                   }}
                 >
-                  <form
-                    className="w-full"
-                    method="dialog
-
-                  "
-                  >
+                  <form className="w-full" method="dialog                  ">
                     <button className="btn btn-error w-full text-white">
                       Close
                     </button>
@@ -180,6 +190,7 @@ const MyWork = () => {
           <button>close</button>
         </form>
       </dialog>
+      <ToastContainer />
     </div>
   );
 };
