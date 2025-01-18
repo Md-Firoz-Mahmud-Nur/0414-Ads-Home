@@ -22,6 +22,11 @@ const MyWork = () => {
     },
   });
 
+  const handleSubmitPicture = (e) => {
+    e.preventDefault();
+    console.log("nulllll");
+  };
+
   if (isLoading) return <Loader></Loader>;
   if (isError) return <div>Error: {error.message}</div>;
 
@@ -84,24 +89,72 @@ const MyWork = () => {
             </ul>
           </div>
 
-          <div className="mt-6 flex items-center justify-around">
+          <div className="mt-6 flex w-full items-center justify-between">
             {isClicked ? (
-              <a
-                onClick={() => {
-                  setIsClicked(false);
-                }}
-                href={modalInfo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="btn btn-success text-white">
-                  Click Here to Start
-                </button>
-              </a>
+              <div className="flex w-full justify-around">
+                <a
+                  onClick={() => {
+                    setIsClicked(false);
+                  }}
+                  href={modalInfo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=""
+                >
+                  <button className="btn btn-success text-white">
+                    Click Here to Start
+                  </button>
+                </a>
+                <div
+                  className="modal-action mt-0"
+                  onClick={() => {
+                    setModalInfo("");
+                    setIsClicked(true);
+                  }}
+                >
+                  <form method="dialog">
+                    <button className="btn btn-error text-white">Close</button>
+                  </form>
+                </div>
+              </div>
             ) : (
-              <div>Image upload</div>
+              <div className="flex w-full flex-col gap-4">
+                <form onSubmit={handleSubmitPicture} className="card-body p-0">
+                  <div className="form-control w-full">
+                    <input
+                      name="photo"
+                      type="file"
+                      className="file-input file-input-bordered w-full"
+                    />
+                  </div>
+
+                  <div>
+                    <button className="btn btn-info w-full border text-white">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+                <div
+                  className="modal-action mt-0 w-full"
+                  onClick={() => {
+                    setModalInfo("");
+                    setIsClicked(true);
+                  }}
+                >
+                  <form
+                    className="w-full"
+                    method="dialog
+
+                  "
+                  >
+                    <button className="btn btn-error w-full text-white">
+                      Close
+                    </button>
+                  </form>
+                </div>
+              </div>
             )}
-            <div
+            {/* <div
               className="modal-action mt-0"
               onClick={() => {
                 setModalInfo("");
@@ -111,7 +164,7 @@ const MyWork = () => {
               <form method="dialog">
                 <button className="btn btn-error text-white">Close</button>
               </form>
-            </div>
+            </div> */}
           </div>
         </div>
         <form
