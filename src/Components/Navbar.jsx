@@ -24,7 +24,7 @@ const Navbar = () => {
     },
   });
 
-  const totalWorkAmount = userDetails.completedWorks.reduce(
+  const totalWorkAmount = userDetails?.completedWorks?.reduce(
     (sum, work) => sum + parseFloat(work.amount),
     parseFloat(userDetails?.balance),
   );

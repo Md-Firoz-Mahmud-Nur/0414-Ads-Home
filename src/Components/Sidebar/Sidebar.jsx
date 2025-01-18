@@ -13,9 +13,18 @@ import { LuLayoutDashboard } from "react-icons/lu";
 import useAdmin from "../../Hooks/useAdmin";
 
 const Sidebar = () => {
-  const { user, signOutUser, setUser, role } = useContext(AuthContext);
+  const {
+    user,
+    signOutUser,
+    setUser,
+    role: userDetails,
+  } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
 
+  const totalWorkAmount = userDetails.completedWorks?.reduce(
+    (sum, work) => sum + parseFloat(work.amount),
+    parseFloat(userDetails?.balance),
+  );
 
   const drawerRef = useRef(null);
 
@@ -65,8 +74,8 @@ const Sidebar = () => {
                 alt=""
               />
               <div>
-                <p> {user ? role?.mobileNumber : ""}</p>
-                <p> {user ? role?.balance : ""}</p>
+                <p> {user ? userDetails?.mobileNumber : ""}</p>
+                <p> {user ? totalWorkAmount : ""}</p>
               </div>
             </div>
             <TbXboxX
