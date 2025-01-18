@@ -1,13 +1,14 @@
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { TbLogin, TbLogout } from "react-icons/tb";
 import Sidebar from "./Sidebar/Sidebar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import AuthContext from "../AuthContext";
 import { Link } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../Hooks/useAuth";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const Navbar = () => {
   const { user, signOutUser, setUser, setRole } = useContext(AuthContext);
@@ -37,6 +38,15 @@ const Navbar = () => {
       .catch(() => {});
   };
 
+  const [showBalance, setShowBalance] = useState(false);
+
+  const handleTap = () => {
+    setShowBalance(true);
+    setTimeout(() => {
+      setShowBalance(false);
+    }, 5000);
+  };
+
   return (
     <div className="h-16 bg-blue-500">
       <div className="container mx-auto flex justify-between text-white">
@@ -47,8 +57,18 @@ const Navbar = () => {
               <h1 className="truncate font-bold">
                 {userDetails?.name || "log in to see Name"}
               </h1>
-              <h1 className="truncate rounded-full bg-white px-2 py-0.5 text-black">
-                {user ? totalWorkAmount : "Tap to balance"}
+              <h1
+                className="truncate rounded-full bg-white px-2 py-0.5 text-black"
+                onClick={handleTap}
+              >
+                {showBalance ? (
+                  <div className="flex items-center gap-1.5">
+                    {totalWorkAmount}
+                    .00 <FaBangladeshiTakaSign />
+                  </div>
+                ) : (
+                  "Tap to balance"
+                )}
               </h1>
             </div>
           </div>
