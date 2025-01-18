@@ -24,6 +24,11 @@ const Navbar = () => {
     },
   });
 
+  const totalWorkAmount = userDetails.completedWorks.reduce(
+    (sum, work) => sum + parseFloat(work.amount),
+    parseFloat(userDetails?.balance),
+  );
+
   const signOut = () => {
     signOutUser()
       .then(() => {
@@ -43,7 +48,7 @@ const Navbar = () => {
                 {userDetails?.name || "log in to see Name"}
               </h1>
               <h1 className="truncate rounded-full bg-white px-2 py-0.5 text-black">
-                {user ? userDetails?.balance : "Tap to balance"}
+                {user ? totalWorkAmount : "Tap to balance"}
               </h1>
             </div>
           </div>
