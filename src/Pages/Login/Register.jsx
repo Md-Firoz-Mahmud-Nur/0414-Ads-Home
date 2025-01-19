@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useContext, useState } from "react";
 import AuthContext from "../../AuthContext";
 import Congratulation from "../../assets/Congratulation.jpeg";
+import auth from "../../../Firebase.config";
 
 const Register = () => {
   const { createNewUser, updateExistingUserProfile } = useContext(AuthContext);
@@ -107,8 +108,21 @@ const Register = () => {
         }, 7000);
       }
     } catch (error) {
-      setIsLoading(false);
       toast.error(error.message);
+      if (auth.currentUser) {
+        await auth.currentUser
+          .delete()
+          .then(() => {
+            toast.error("Something went wrong");
+          })
+          .catch(() => {
+            toast.error("Something Went Wrong");
+          });
+      } else {
+        toast.error("Something went error");
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
