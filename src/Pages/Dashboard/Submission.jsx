@@ -50,6 +50,9 @@ const Submission = () => {
                   <p className="text-sm font-semibold text-green-600">
                     Amount: {work.amount}
                   </p>
+                  <p className="text-sm font-semibold text-blue-600">
+                    User Email: {work.email}
+                  </p>
                   <p className="text-xs text-gray-400">
                     Submitted at:{" "}
                     {new Date(work.workSubmittedAt).toLocaleString()}
