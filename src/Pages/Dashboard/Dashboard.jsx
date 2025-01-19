@@ -10,6 +10,9 @@ const Dashboard = () => {
         <Link to="/dashboard/viewLinks" className="btn btn-info text-white">
           View Links
         </Link>
+        <Link to="/dashboard/submission" className="btn btn-info text-white">
+          Submission
+        </Link>
       </div>
     </div>
   );

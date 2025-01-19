@@ -15,6 +15,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import AdminRoute from "./AdminRoute";
 import AddLink from "./Pages/Dashboard/AddLink";
 import ViewLinks from "./Pages/Dashboard/ViewLinks";
+import Submission from "./Pages/Dashboard/Submission";
 
 const router = createBrowserRouter([
   {
@@ -70,7 +71,15 @@ const router = createBrowserRouter([
         path: "/dashboard/viewLinks",
         element: (
           <AdminRoute>
-            <ViewLinks></ViewLinks>{" "}
+            <ViewLinks></ViewLinks>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/submission",
+        element: (
+          <AdminRoute>
+            <Submission></Submission>
           </AdminRoute>
         ),
       },
