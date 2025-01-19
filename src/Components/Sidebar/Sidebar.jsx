@@ -3,7 +3,7 @@ import manPng from "../../assets/man.png";
 import { PiHandWithdrawDuotone, PiPasswordBold } from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
 import { IoHomeOutline, IoSettingsOutline } from "react-icons/io5";
-import { FaMoneyBills } from "react-icons/fa6";
+import { FaBangladeshiTakaSign, FaMoneyBills } from "react-icons/fa6";
 import { FiUserPlus } from "react-icons/fi";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
 import { useContext, useRef } from "react";
@@ -77,7 +77,17 @@ const Sidebar = () => {
               />
               <div>
                 <p> {user ? userDetails?.mobileNumber : ""}</p>
-                <p> {user ? totalWorkAmount : ""}</p>
+                <p>
+                  {" "}
+                  {user ? (
+                    <div className="flex items-center gap-1.5">
+                      {totalWorkAmount}
+                      .00 <FaBangladeshiTakaSign />
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                </p>
               </div>
             </div>
             <TbXboxX

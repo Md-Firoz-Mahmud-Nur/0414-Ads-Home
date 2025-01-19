@@ -32,8 +32,6 @@ const Navbar = () => {
       0,
     ) || 0);
 
-  console.log(totalWorkAmount);
-
   const signOut = () => {
     signOutUser()
       .then(() => {
