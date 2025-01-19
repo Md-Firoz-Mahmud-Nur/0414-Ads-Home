@@ -77,17 +77,14 @@ const Sidebar = () => {
               />
               <div>
                 <p> {user ? userDetails?.mobileNumber : ""}</p>
-                <p>
-                  {" "}
-                  {user ? (
-                    <div className="flex items-center gap-1.5">
-                      {totalWorkAmount}
-                      .00 <FaBangladeshiTakaSign />
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </p>
+                {user ? (
+                  <div className="flex items-center gap-1.5">
+                    {totalWorkAmount}
+                    .00 <FaBangladeshiTakaSign />
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <TbXboxX
