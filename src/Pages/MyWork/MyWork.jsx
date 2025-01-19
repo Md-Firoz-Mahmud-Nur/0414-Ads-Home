@@ -45,7 +45,14 @@ const MyWork = () => {
 
     const photo = e.target.photo.files[0];
     const photoUrl = photo ? await uploadImage(photo) : "";
-    const userImageSubmission = { email: user.email, modalInfo, photoUrl };
+    const userImageSubmission = {
+      email: user.email,
+      modalInfo,
+      photoUrl,
+      workSubmittedAt: new Date(
+        new Date().getTime() + 6 * 60 * 60 * 1000,
+      ).toISOString(),
+    };
     console.log(userImageSubmission);
     const userWorkImageSubmission = await axiosSecure.post(
       "/userWorkImageSubmission",
