@@ -21,10 +21,12 @@ const Sidebar = () => {
   } = useContext(AuthContext);
   const [isAdmin] = useAdmin();
 
-  const totalWorkAmount = userDetails.completedWorks?.reduce(
-    (sum, work) => sum + parseFloat(work.amount),
-    parseFloat(userDetails?.balance),
-  );
+  const totalWorkAmount =
+    parseFloat(userDetails?.balance || 0) +
+    (userDetails?.completedWorks?.reduce(
+      (sum, work) => sum + parseFloat(work.amount || 0),
+      0,
+    ) || 0);
 
   const drawerRef = useRef(null);
 

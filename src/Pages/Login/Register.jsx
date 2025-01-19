@@ -104,7 +104,7 @@ const Register = () => {
           setTimeout(() => {
             navigate(location?.state ? location.state : "/");
           }, 1500);
-        }, 2000);
+        }, 7000);
       }
     } catch (error) {
       setIsLoading(false);

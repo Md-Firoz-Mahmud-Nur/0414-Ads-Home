@@ -25,10 +25,14 @@ const Navbar = () => {
     },
   });
 
-  const totalWorkAmount = userDetails?.completedWorks?.reduce(
-    (sum, work) => sum + parseFloat(work.amount),
-    parseFloat(userDetails?.balance),
-  );
+  const totalWorkAmount =
+    parseFloat(userDetails?.balance || 0) +
+    (userDetails?.completedWorks?.reduce(
+      (sum, work) => sum + parseFloat(work.amount || 0),
+      0,
+    ) || 0);
+
+  console.log(totalWorkAmount);
 
   const signOut = () => {
     signOutUser()
